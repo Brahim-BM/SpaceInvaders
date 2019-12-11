@@ -1,0 +1,12 @@
+Here you'll find my own version of Space Invaders done for a project in class. After the last deadline, I decided to improve my way 
+of coding my learning POO in Python ! In my first Space Invaders, I use global variables and in this one I learn to use class.
+Enjoy it !
+
+Commands for Space Invaders :
+
+Left, Right for moving
+Space for Launching Missiles.
+
+You can change the keys in the option menu as well as the language and the difficulty ! 
+
+Good game !
