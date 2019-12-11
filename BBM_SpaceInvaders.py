@@ -186,39 +186,42 @@ class game:
         self.create_aliens()
         self.move_aliens()
         
+        #If no settings have been entered, i choose one by default
         if self.key_l == '' or self.key_r == '' or self.key_s == '':
             self.key_l = 'Left'
             self.key_r = 'Right'
             self.key_s = 'space'
             
         self.player = player(self,self.game_area,self.window,self.width,self.height, self.key_l, self.key_r, self.key_s)
-        self.buildings = buildings(self.game_area,self.width,self.height)
-        
-   
+        #self.buildings = buildings(self.game_area,self.width,self.height)
+      
     def exit_game(self):
         self.window.destroy()
-            
-    def language(self):
         
-        self.bool_language = True
+    def options(self):
         
-        self.button_language.destroy()
-        self.button_controls.destroy()
-        self.button_difficulty.destroy()
-        self.button_previous.destroy()
+        print("Je suis la")
+        self.bool_options = True
+        self.bool_language = False
+        self.bool_controls = False
+        self.bool_difficulty = False
         
-        self.button_english = tk.Button(self.window, textvariable = self.text_english,fg="white",command = self.english, background = "#110d1a", font = "helvetica")
-        self.button_english.pack()
-        self.button_english.place(relx = 0.5,rely = 0.3, anchor = 'n')
-            
-        self.button_french = tk.Button(self.window, textvariable = self.text_french,fg="white",command = self.french, background = "#110d1a", font = "helvetica")
-        self.button_french.pack()
-        self.button_french.place(relx = 0.5,rely = 0.5, anchor = 'n')
+        self.button_option.destroy()
+        self.new_game.destroy()
+        self.finish_game.destroy()
         
-        self.button_japanese = tk.Button(self.window, textvariable = self.text_japanese,fg="white",command = self.japanese, background = "#110d1a", font = "helvetica")
-        self.button_japanese.pack()
-        self.button_japanese.place(relx = 0.5,rely = 0.7, anchor = 'n')
-            
+        self.button_language = tk.Button(self.window, textvariable = self.text_language,fg="white",command = self.language, background = "#110d1a", font = "helvetica")
+        self.button_language.pack()
+        self.button_language.place(relx = 0.5,rely = 0.5, anchor = 'n')
+        
+        self.button_controls = tk.Button(self.window, textvariable = self.text_controls,fg="white",command = self.controls, background = "#110d1a", font = "helvetica")
+        self.button_controls.pack()
+        self.button_controls.place(relx = 0.5,rely = 0.7, anchor = 'n')
+        
+        self.button_difficulty = tk.Button(self.window, textvariable = self.text_difficulty,fg="white",command = self.difficulty, background = "#110d1a", font = "helvetica")
+        self.button_difficulty.pack()
+        self.button_difficulty.place(relx = 0.5,rely = 0.3, anchor = 'n')
+        
         self.button_previous = tk.Button(self.window, textvariable = self.text_previous,fg="white", command = self.previous, background = "#110d1a", font = "helvetica")
         self.button_previous.pack()
         self.button_previous.place(relx = 0.1,rely = 0.9, anchor = 'n')
@@ -253,6 +256,31 @@ class game:
         
         self.nb_row = 4
         self.nb_col = 6
+        
+    def language(self):
+        
+        self.bool_language = True
+        
+        self.button_language.destroy()
+        self.button_controls.destroy()
+        self.button_difficulty.destroy()
+        self.button_previous.destroy()
+        
+        self.button_english = tk.Button(self.window, textvariable = self.text_english,fg="white",command = self.english, background = "#110d1a", font = "helvetica")
+        self.button_english.pack()
+        self.button_english.place(relx = 0.5,rely = 0.3, anchor = 'n')
+            
+        self.button_french = tk.Button(self.window, textvariable = self.text_french,fg="white",command = self.french, background = "#110d1a", font = "helvetica")
+        self.button_french.pack()
+        self.button_french.place(relx = 0.5,rely = 0.5, anchor = 'n')
+        
+        self.button_japanese = tk.Button(self.window, textvariable = self.text_japanese,fg="white",command = self.japanese, background = "#110d1a", font = "helvetica")
+        self.button_japanese.pack()
+        self.button_japanese.place(relx = 0.5,rely = 0.7, anchor = 'n')
+            
+        self.button_previous = tk.Button(self.window, textvariable = self.text_previous,fg="white", command = self.previous, background = "#110d1a", font = "helvetica")
+        self.button_previous.pack()
+        self.button_previous.place(relx = 0.1,rely = 0.9, anchor = 'n')
         
     def english(self):
         self.set_text()
@@ -405,39 +433,7 @@ class game:
             self.button_hard.destroy()
             self.game_area.delete(self.difficulty_now)
             
-            self.options()
-            
-            
-        
-    def options(self):
-        
-        print("Je suis la")
-        self.bool_options = True
-        self.bool_language = False
-        self.bool_controls = False
-        self.bool_difficulty = False
-        
-        self.button_option.destroy()
-        self.new_game.destroy()
-        self.finish_game.destroy()
-        
-        self.button_language = tk.Button(self.window, textvariable = self.text_language,fg="white",command = self.language, background = "#110d1a", font = "helvetica")
-        self.button_language.pack()
-        self.button_language.place(relx = 0.5,rely = 0.5, anchor = 'n')
-        
-        self.button_controls = tk.Button(self.window, textvariable = self.text_controls,fg="white",command = self.controls, background = "#110d1a", font = "helvetica")
-        self.button_controls.pack()
-        self.button_controls.place(relx = 0.5,rely = 0.7, anchor = 'n')
-        
-        self.button_difficulty = tk.Button(self.window, textvariable = self.text_difficulty,fg="white",command = self.difficulty, background = "#110d1a", font = "helvetica")
-        self.button_difficulty.pack()
-        self.button_difficulty.place(relx = 0.5,rely = 0.3, anchor = 'n')
-        
-        self.button_previous = tk.Button(self.window, textvariable = self.text_previous,fg="white", command = self.previous, background = "#110d1a", font = "helvetica")
-        self.button_previous.pack()
-        self.button_previous.place(relx = 0.1,rely = 0.9, anchor = 'n')
-        
-        
+            self.options()        
         
 # Create aliens after pushing the start game button
     
@@ -455,7 +451,7 @@ class game:
         else:
             img = 'alian3.gif'
             
-        self.alien_img = self.extract_gif(img) #permet d'extraire  le gif de l'alien
+        self.alien_img = self.extract_gif(img) # i just take the gif from the picture named "img"
         for line in range(self.nb_row):
             self.alien_line.append([])
             self.alien_id.append([])
@@ -466,10 +462,9 @@ class game:
         self.alien_fire()
             
     def move_aliens(self):
+        # If the aliens are in game_area. 
         in_bounds = True
-#    y = coordAliens[-1][1]
-#    dy = 20
-        for i in self.alien_line: # Pour chaque alien, je les deplace de dx
+        for i in self.alien_line: # I move every alien from self.dx
             for alien in i:
                 alien.auto_move()
                 if alien.in_bounds() == False:
@@ -486,7 +481,7 @@ class game:
             self.callback = self.window.after(25, self.move_aliens)
         
     def alien_fire(self):
-        #methode qui selectionne un alien vivant au hasard pour tirer
+        #method that selects an alien randomly to fire
 
         alive_aliens = []
 
@@ -501,7 +496,7 @@ class game:
     def delete_alien_by_id(self, alien):
         no_aliens = True
         print(len(self.alien_line))
-        # methode qui permet de supprimer un alien de la liste des aliens pouvant tirer lorsqu'il meurt
+        # method that removes an alien from the list of aliens who can fire when it dies
         for index in range(len(self.alien_id)):
             # For every alien who has been hitting
             if alien in self.alien_id[index]:
@@ -523,20 +518,18 @@ class game:
                     no_aliens = False
         
         if no_aliens == True:
-            self.gagner()
+            self.win()
     
     def explosion(self):
-        # methode qui gère la disparitions des images d'explosions lors de la destruction des aliens
-
+      # method that manages the disappearance of images of explosions during the destruction of aliens
         self.game_area.delete(self.blown_up[0])
         self.blown_up.pop(0)
                    
-        
-    def gagner(self):
+    def win(self):
         self.window.unbind(self.key_l)
         self.window.unbind(self.key_r)
         self.window.unbind(self.key_s)
-        print("gagner")
+        print("win")
         self.game_area.delete(self.player.id) 
         self.win_img = tk.PhotoImage(file = 'win.png', format = 'png')
         self.game_area.itemconfigure(self.bg, image = self.win_img)
@@ -596,7 +589,7 @@ class alien:
         
         
     def auto_move(self):
-        # méthode qui permet de gérer le gif alien ennemi
+        # method that manages the enemy alien gif
         
         self.canvas.move(self.id, self.dx, self.dy)
         self.gif_alien += 1
@@ -622,13 +615,14 @@ class alien:
             return True
         
     def fire(self, img = ''):
-        # méthode qui gére le tir alien
+        # method that manages the alien shot
         pos=self.canvas.bbox(self.id)
         self.missile = projectile(self, self.canvas, pos[0] +10, pos[1]-10, self.window, img)
         
     def is_crashed(self):
-        # methode qui permet de gerer les colisions
-        # distingue si les aliens touche le vaisseau allié, un block
+
+        # method that manages collisions 
+        # if the aliens touch the ally ship, a block
 
         x0 = self.canvas.bbox(self.id)[0]
         y0 = self.canvas.bbox(self.id)[1]
@@ -666,7 +660,7 @@ class alien:
                     
                     
 class player:
-    #classe qui gère le spaceship allié
+   #class that manages the allied spaceship
 
     def __init__(self, parent, canvas, window, can_width, can_height, keyl, keyr, keys):
         # Creating the spaceship with the different characteristics : Position, Key event
@@ -694,8 +688,8 @@ class player:
         self.enable_fire()
 
     def gauche(self, event):
-        # méthode qui gère le déplacement du vaisseau vers la gauche
-        # ne fait rien si le vaisseau est collé au bord gauche, grâce à l'argument event
+        # method that handles the movement of the ship to the left
+         # does nothing if the ship is stuck to the left edge, thanks to the event argument
         pos=self.canvas.bbox(self.id)
 
         if pos[0] > 0:
@@ -704,8 +698,8 @@ class player:
             pass
 
     def droite(self, event):
-        # méthode qui gère le déplacement du vaisseau vers la droite
-        # ne fait rien si le vaisseau est collé au bord droit, grâce à l'argument event
+        # method that handles the movement of the ship to the right
+         # does nothing if the ship is stuck to the right edge, thanks to the event argument
         pos=self.canvas.bbox(self.id)
 
         if pos[2] <= self.can_w:
@@ -741,15 +735,15 @@ class projectile:
         self.img = img
 
         if isinstance(self.parent, player):
-            # création d'un tir allié
+           # create an allied shot
             self.id = self.canvas.create_rectangle(x,y-25,x+1,y, fill = "red", outline = "red", tag = ('my_shoot','tir'))
             self.window.unbind(self.parent.key_space)
             self.dy = -25
 
         if isinstance(self.parent, alien):
-            # méthode qui permet de faire tirer les aliens
-            r = lambda: randint(0,255) # genere un nombre au hasard entre  0 et 255
-            a = '#%02X%02X%02X' % (r(),r(),r()) # génere un code couleur, ce qui permet d'avoir une couleur choisit au hasard pour chaque projectil
+            # method that allows the aliens to be fired
+            r = lambda: randint(0,255) # generate a random number between 0 and 255
+            a = '#%02X%02X%02X' % (r(),r(),r()) # generate a color code, which allows to have a random color chosen for each projectile
             if self.img == '':
                 self.id = self.canvas.create_rectangle(x,y+50,x+5,y+60, fill = a, outline = a, tag = ('alien_shoot'))
                 self.dy = 10
@@ -872,22 +866,22 @@ class projectile:
                    
         
 class buildings:
-    # classe qui permet la création des blocs de protection
+    # class that allows the creation of protection blocks
 
     alive_buildings = []
 
     def __init__(self, canvas, can_width, can_height):
 
-        # méthode qui permet de caractériser les blocs de protection
+       # method that characterizes the protection blocks
 
-        self.pattern = "00000000000000000000000111111111111111111111"*4 # motif de répartition des blocs de proction
+        self.pattern = "00000000000000000000000111111111111111111111"*4 # distribution pattern of protection blocks
         self.can_w = can_width
         self.can_h = can_height
-        self.cote = 4 # largeur
-        self.height = 5 # hauteur
+        self.cote = 4 # width
+        self.height = 5 # height
 
         for i in range(self.height):
-            for j in enumerate(self.pattern):
+            for pos,j in enumerate(self.pattern):
                 if j == "1":
                     buildings.alive_buildings.append(canvas.create_rectangle(pos*self.cote,self.can_h-(i*self.cote+150), (pos+1)*self.cote, self.can_h-(self.cote*(i+1)+150), fill = "grey", outline = "grey", tag = 'bloc'))
 
